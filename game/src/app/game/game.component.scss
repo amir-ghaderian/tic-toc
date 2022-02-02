@@ -1,5 +1,19 @@
 .main-container{
     .gameboard{
+        margin-top: 30px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        .player-one{
+            p{
+                color: red;
+            }
+        }
+        .player-two{
+            p{
+                color:greenyellow;
+            }
+        }
         .gamefield{
             max-width: 300px;
             .subfield{
