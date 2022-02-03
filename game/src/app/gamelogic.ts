@@ -2,7 +2,7 @@ import { Status } from './game-status';
 export class Gamelogic {
     gameField: Array<number> = [];
 
-    currentTurn:number;
+    currentTurn:number=0;
 
     gameStatus: Status;
 
@@ -14,7 +14,6 @@ export class Gamelogic {
     gameStart(): void {
         this.gameField = [0, 0, 0, 0, 0, 0, 0, 0, 0];
         this.currentTurn = this.randomPlayerstart();
-        console.log(this.currentTurn)
         this.gameStatus = Status.START;
     }
     randomPlayerstart(): number {
