@@ -14,12 +14,27 @@ export class GameComponent implements OnInit {
   ngOnInit(): void {
   }
   startGame(): void {
-    this.game.gameStart()
+    this.game.gameStart();
+    const currentPlayer = 'Current turn : Player:' + this.game.currentTurn;
+    const information = document.querySelector('.current-status');
+    if (information) information.innerHTML = currentPlayer.toString()
   }
-  async clickSubfield(subfield:any):Promise<void>{
-    if(this.game.gameStatus=== 1){
-       const position =subfield.currentTarget.getAttribute('position');
-       console.log(position)
+  async clickSubfield(subfield: any): Promise<void> {
+    
+    if (this.game.gameStatus === 1) {
+      const position = subfield.currentTarget.getAttribute('position');
+
+
+      this.game.setField(position, this.game.currentTurn);
+      const color = this.game.getPlayerColorClass();
+      subfield.currentTarget.classList.add(color);
+    }
+    this.game.changePlayer()
+    if (this.game.gameStatus === 1) {
+      const currentPlayer = 'Current turn : Player:' + this.game.currentTurn;
+      const information = document.querySelector('.current-status');
+
+    if (information) information.innerHTML = currentPlayer.toString()
     }
   }
 }

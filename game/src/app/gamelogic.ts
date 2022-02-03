@@ -2,7 +2,7 @@ import { Status } from './game-status';
 export class Gamelogic {
     gameField: Array<number> = [];
 
-    currentTurn:number=0;
+    currentTurn: number = 0;
 
     gameStatus: Status;
 
@@ -17,7 +17,17 @@ export class Gamelogic {
         this.gameStatus = Status.START;
     }
     randomPlayerstart(): number {
-        const startPlyer = Math.floor(Math.random()*2)+1;
+        const startPlyer = Math.floor(Math.random() * 2) + 1;
         return startPlyer;
+    }
+    setField(position: number, value: number): void {
+        this.gameField[position] = value;
+    }
+    getPlayerColorClass(): string {
+        const colorClass = (this.currentTurn === 2) ? 'player-two' : 'player-one';
+        return colorClass;
+    }
+    changePlayer(): void {
+        this.currentTurn = (this.currentTurn === 2) ? 1 : 2;
     }
 }
